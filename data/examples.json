@@ -1,0 +1,38 @@
+[
+  {
+    "question": "yyyy年的区域性暴雨过程次数是多少？",
+    "sql": "SELECT COUNT(*) FROM rainstorm_reg_pro WHERE year=yyyy"
+  },
+  {
+    "question": "yyyy年MM月的区域性暴雨过程次数是多少？",
+    "sql": "SELECT COUNT(*) FROM rainstorm_reg_pro WHERE start_date LIKE 'yyyyMM%'"
+  },
+  {
+    "question": "yyyy年有多少次区域性暴雨过程？",
+    "sql": "SELECT COUNT(*) FROM rainstorm_reg_pro WHERE year=yyyy"
+  },
+  {
+    "question": "yyyy年的单站暴雨过程次数是多少？",
+    "sql": "SELECT COUNT(*) FROM rainstorm_single_pro WHERE year=yyyy"
+  },
+  {
+    "question": "yyyy年MM月的单站暴雨过程次数是多少？",
+    "sql": "SELECT COUNT(*) FROM rainstorm_single_pro WHERE start_date LIKE 'yyyyMM%'"
+  },
+  {
+    "question": "yyyy年MM月有哪些区域性暴雨过程？",
+    "sql": "SELECT id, start_date, rainstorm_name FROM rainstorm_reg_pro WHERE start_date LIKE '202506%'"
+  },
+  {
+    "question": "yyyy年MM月暴雨过的最相似个例",
+    "sql": "SELECT r.*, s.similarity FROM disaster_similar_list s JOIN rainstorm_reg_pro r ON s.target_id = r.id WHERE s.source_id = 'xxxx' ORDER BY s.similarity DESC LIMIT 10"
+  },
+  {
+    "question": "yyyy年MM月暴雨过的最相似个例",
+    "sql": "SELECT r.*, s.similarity FROM disaster_similar_list s JOIN rainstorm_reg_pro r ON s.target_id = r.id WHERE s.source_id = 'xxxx' ORDER BY r.rainfall DESC, s.similarity DESC LIMIT 10"
+  },
+  {
+    "question": "yyyy年MM月暴雨过的最相似个例",
+    "sql": "SELECT r.*, s.similarity FROM disaster_similar_list s JOIN rainstorm_reg_pro r ON s.target_id = r.id WHERE s.source_id = 'xxxx' ORDER BY r.duration DESC, s.similarity DESC LIMIT 10"
+  }
+]
